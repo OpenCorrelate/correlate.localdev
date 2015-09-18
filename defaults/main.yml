@@ -4,4 +4,4 @@
 
 # Shell
 
-shell_scaffold_force: yes  # Do not overwrite ZSH scaffolding if it exists
+shell_scaffold_force: no  # Do not overwrite ZSH scaffolding if it exists

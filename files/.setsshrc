@@ -1,0 +1,16 @@
+#! /bin/sh
+
+echo "Keychain setup"
+keys=()
+for key in `ls $HOME/.ssh/key-* | grep -v \.pub`; do
+    keys+=($key)
+done
+
+if test -n "$keys"; then
+	$(which keychain) $keys
+	. ~/.keychain/$HOST-sh
+fi
+
+function push-key {
+    ssh $1 "echo '`cat $2`' >> ~/.ssh/authorized_keys"
+}

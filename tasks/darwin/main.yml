@@ -2,6 +2,9 @@
 - name: "Sanity check for Darwin Environment"
   ping:
 
+- name: Install Ansible with pip
+  command: /usr/local/bin/pip install ansible
+
 - name: Change shell to ZSH
   user: name={{ ansible_user_id }}
         groups=admin,wheel

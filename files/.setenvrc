@@ -1,0 +1,23 @@
+#! /bin/sh
+
+echo "Environment setup"
+export DEV_HOME=$HOME/dev
+export INSTALL_HOME=$DEV_HOME/install
+export BUILD_HOME=$DEV_HOME/build
+export SCM_HOME=$DEV_HOME/scm
+export SRC_HOME=$DEV_HOME/src
+export EXERCISE_HOME=$DEV_HOME/exercise
+export SCRATCH_HOME=$DEV_HOME/scratch
+
+mkdir -p $DEV_HOME $INSTALL_HOME $BUILD_HOME $SCM_HOME $SRC_HOME $EXERCISE_HOME $SCRATCH_HOME 
+
+export PATH=$LIBRARY_HOME/PackageManager/bin:/usr/local/bin:$HOME/homebrew/bin:$PATH:/bin:$INSTALL_HOME/bin:/opt/local/bin:$HOME/bin
+
+export EDITOR=vim
+
+# Configure other shit
+. $HOME/.setcolorrc
+. $HOME/.setlessrc
+. $HOME/.setsshrc
+. $HOME/.setbrewrc
+. $HOME/.setansiblerc

@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo "Ansible Setup"
+
+export ANSIBLE_CONFIG="$HOME/.ansible.cfg"
+
