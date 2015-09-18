@@ -23,4 +23,5 @@ homebrew_cask_apps:
   - virtualbox-extension-pack
   - vagrant
 
+
 homebrew_cask_appdir: /Applications
