@@ -1,3 +1,20 @@
 ---
 - name: "Sanity check for Darwin Environment"
   ping:
+
+- name: Change shell to ZSH
+  user: name={{ ansible_user_id }}
+        groups=admin,wheel
+        append=yes
+        shell=/usr/local/bin/zsh
+  sudo: yes
+
+- name: Set default key for user
+  user: name={{ ansible_user_id }}
+        groups=admin,wheel
+        append=yes
+        generate_ssh_key=yes
+        ssh_key_bits=2048
+        ssh_key_type=rsa
+        ssh_key_file=.ssh/key-{{ansible_hostname}}-{{ansible_date_time.year}}{{ansible_date_time.month}}{{ansible_date_time.day}}
+  sudo: yes

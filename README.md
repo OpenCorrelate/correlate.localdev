@@ -14,7 +14,23 @@ None
 Role Variables
 --------------
 
-TBD
+Available variables are listed below, along with default values (see `defaults/main.yml`):
+
+#### shell_scaffold_force
+
+    shell_scaffold_force: no 
+
+Variable permits overwriting of ZSH scaffolding files:
+
+    .setansiblerc
+    .setbrewrc
+    .setcolorrc
+    .setenvrc
+    .setlessrc
+    .setsshrc
+    .zshrc
+
+
 
 Dependencies
 ------------

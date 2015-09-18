@@ -6,8 +6,7 @@
 
 homebrew_installed_packages:
   - ssh-copy-id
-  # - gcc
-  # - ansible
+  - ansible
   - zsh
   - keychain
 

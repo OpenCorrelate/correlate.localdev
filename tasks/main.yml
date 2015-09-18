@@ -1,15 +1,41 @@
 ---
 # tasks file for correlate.localdev
 
+# - name: Add the Correlate groups
+#   group: name=correlate state=present
+#   sudo: yes
+#   tags: main
+
+- name: Copy environment scaffold
+  copy: src={{item}} 
+        dest=~/
+        owner={{ ansible_user_id }} 
+        mode=0644
+        force={{ shell_scaffold_force | default('no')}}
+  with_fileglob:
+    - .zshrc
+    - .set*rc
+  tags:
+    - main
+    - scaffold
+
 # OS specific dispatch
 - include: darwin/main.yml
   when: ansible_os_family == 'Darwin'
+  tags:
+    - darwin
 
 - include: debian/main.yml
   when: ansible_os_family == 'Debian'
+  tags:
+    - debian
 
 - include: redhat/main.yml
   when: ansible_os_family == 'Redhat'
+  tags:
+    - redhat
 
 - include: suse/main.yml
   when: ansible_os_family == 'Suse'
+  tags:
+    - suse
