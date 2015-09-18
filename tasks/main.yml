@@ -1,0 +1,15 @@
+---
+# tasks file for correlate.localdev
+
+# OS specific dispatch
+- include: darwin/main.yml
+  when: ansible_os_family == 'Darwin'
+
+- include: debian/main.yml
+  when: ansible_os_family == 'Debian'
+
+- include: redhat/main.yml
+  when: ansible_os_family == 'Redhat'
+
+- include: suse/main.yml
+  when: ansible_os_family == 'Suse'
