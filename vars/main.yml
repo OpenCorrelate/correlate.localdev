@@ -9,8 +9,6 @@ homebrew_installed_packages:
   - python
   - zsh
   - keychain
-
-homebrew_blacklisted_packages:
   - ansible
 
 homebrew_upgrade_all_packages: no
