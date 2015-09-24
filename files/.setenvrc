@@ -20,4 +20,5 @@ export EDITOR=vim
 . $HOME/.setlessrc
 . $HOME/.setsshrc
 . $HOME/.setbrewrc
+. $HOME/.setvagrantrc
 . $HOME/.setansiblerc
