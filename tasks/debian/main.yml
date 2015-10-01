@@ -30,22 +30,11 @@
   apt: update_cache=yes
   sudo: yes
 
-- name: Install Virtualbox and Ansible
+- name: Install Ansible
   apt: pkg={{item}} state=installed
   with_items:
-    - virtualbox-5.0
     - ansible
   sudo: yes
-
-- name: Fetch Vagrant installer
-  get_url:  url=https://dl.bintray.com/mitchellh/vagrant/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb  
-            dest=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb mode=0644
-
-- name: Run Vagrant installer
-  apt:  deb=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb 
-        state=installed
-  sudo: yes
-
 
 - name: Change shell to ZSH
   user: name={{ ansible_user_id }}

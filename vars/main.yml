@@ -19,9 +19,9 @@ homebrew_taps:
 
 homebrew_cask_apps:
   - iterm2
-  - virtualbox
-  - virtualbox-extension-pack
-  - vagrant
+  # - virtualbox
+  # - virtualbox-extension-pack
+  # - vagrant
 
 
 homebrew_cask_appdir: /Applications
