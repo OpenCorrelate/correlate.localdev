@@ -18,6 +18,7 @@ homebrew_taps:
   - caskroom/cask
 
 homebrew_cask_apps:
+  - iterm2
   - virtualbox
   - virtualbox-extension-pack
   - vagrant

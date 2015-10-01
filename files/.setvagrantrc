@@ -1,0 +1,4 @@
+#! /bin/sh
+
+echo "Vagrant setup"
+export VAGRANT_DEFAULT_PROVIDER=virtualbox

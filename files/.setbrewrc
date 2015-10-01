@@ -1,6 +1,6 @@
 #! /bin/sh
 
-echo "Homebrew setup"
 export HOMEBREW_PREFIX=/usr/local
-export PATH=$PATH:$HOME/homebrew/bin
+export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+export PATH=$PATH:$HOME/homebrew/bin:$HOME/.brewrc.d/bin
 export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
