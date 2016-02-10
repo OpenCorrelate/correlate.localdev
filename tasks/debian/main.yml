@@ -38,7 +38,7 @@
   sudo: yes
 
 - name: Fetch Vagrant installer
-  get_url:  url=https://dl.bintray.com/mitchellh/vagrant/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb  
+  get_url:  url=https://releases.hashicorp.com/vagrant/{{ vagrant_version | default('1.7.4')}}/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb  
             dest=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb mode=0644
 
 - name: Run Vagrant installer
