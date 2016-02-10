@@ -2,7 +2,7 @@
 
 echo "Keychain setup"
 keys=()
-for key in `ls $HOME/.ssh/key-* | grep -v \.pub`; do
+for key in `ls $HOME/.ssh/key-* | grep -v \.pub | grep -v \.ppk`; do
     keys+=($key)
 done
 

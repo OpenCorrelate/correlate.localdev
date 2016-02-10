@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "Common Aliases setup"
+
+alias octave="octave --no-gui"

@@ -1,6 +1,8 @@
 #! /bin/sh
 
 echo "Environment setup"
+export SCREEN_HOME=~/.sreenrc.d
+export SHELL_HOME=~/.sh
 export DEV_HOME=$HOME/dev
 export INSTALL_HOME=$DEV_HOME/install
 export BUILD_HOME=$DEV_HOME/build
@@ -8,17 +10,49 @@ export SCM_HOME=$DEV_HOME/scm
 export SRC_HOME=$DEV_HOME/src
 export EXERCISE_HOME=$DEV_HOME/exercise
 export SCRATCH_HOME=$DEV_HOME/scratch
+export PLNKR_HOME=$DEV_HOME/plnkr
+export FIDDLE_HOME=$DEV_HOME/fiddle
+export BOOTPLY_HOME=$DEV_HOME/bootply
+export LIBRARY_HOME=$HOME/Library
+export NOTES_HOME=$DEV_HOME/notes
+export DOCUMENTS_HOME=$HOME/Documents
+export CREATIVE_HOME=$DOCUMENTS_HOME/creative
 
-mkdir -p $DEV_HOME $INSTALL_HOME $BUILD_HOME $SCM_HOME $SRC_HOME $EXERCISE_HOME $SCRATCH_HOME 
+mkdir -p $DEV_HOME $INSTALL_HOME $BUILD_HOME $SCM_HOME $SRC_HOME $EXERCISE_HOME $SCRATCH_HOME $PLNKR_HOME $FIDDLE_HOME $BOOTPLY_HOME $LIBRARY_HOME $SCREEN_HOME $SHELL_HOME
 
-export PATH=$LIBRARY_HOME/PackageManager/bin:/usr/local/bin:$HOME/homebrew/bin:$PATH:/bin:$INSTALL_HOME/bin:/opt/local/bin:$HOME/bin
+export DEV_HOME INSTALL_HOME BUILD_HOME SCM_HOME
+
+export PATH=$LIBRARY_HOME/PackageManager/bin:/usr/local/bin:$HOME/homebrew/bin:/bin:$INSTALL_HOME/bin:/opt/local/bin:$HOME/bin:$PATH
 
 export EDITOR=vim
 
+
 # Configure other shit
-. $HOME/.setcolorrc
-. $HOME/.setlessrc
-. $HOME/.setsshrc
-. $HOME/.setbrewrc
-. $HOME/.setvagrantrc
-. $HOME/.setansiblerc
+. $HOME/.setenvrc.d/.setbindkeyrc
+. $HOME/.setenvrc.d/.setcolorrc
+. $HOME/.setenvrc.d/.setcronrc
+. $HOME/.setenvrc.d/.setlessrc
+. $HOME/.setenvrc.d/.setaliasrc
+. $HOME/.setenvrc.d/.setpbcopyrc
+. $HOME/.setenvrc.d/.setsshrc
+. $HOME/.setenvrc.d/.setscreenrc
+. $HOME/.setenvrc.d/.setvagrantrc
+. $HOME/.setenvrc.d/.setansiblerc
+. $HOME/.setenvrc.d/.setbrewrc
+. $HOME/.setenvrc.d/.setpodrc
+. $HOME/.setenvrc.d/.setjavarc
+. $HOME/.setenvrc.d/.setperlrc
+. $HOME/.setenvrc.d/.setpyrc
+. $HOME/.setenvrc.d/.setghcrc
+. $HOME/.setenvrc.d/.setphprc
+. $HOME/.setenvrc.d/.setnvmrc
+. $HOME/.setenvrc.d/.setrvmrc
+
+# Final shit
+. $HOME/.setenvrc.d/.setpromptrc
+. $HOME/.setenvrc.d/.setpathrc
+
+
+
+
+

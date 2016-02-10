@@ -1,0 +1,60 @@
+---
+- name: "Synchronize environments"
+  hosts: "{{ alternate_host | default('home_unix')}}"
+  sudo: no
+
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+  tasks:
+
+  # - name: "List old set*rc"
+  #   shell: "ls {{ ansible_user_dir }}/.set*rc | grep -v setenvrc"
+  #   register: old_set_rcs
+  #   ignore_errors: yes
+  #   changed_when: False
+
+  # - name: "Remove old set*rc"
+  #   file: name={{item}} state=absent
+  #   with_items: old_set_rcs.stdout_lines
+
+  # - name: "List old .brewrc.d"
+  #   shell: "ls -d {{ ansible_user_dir }}/.brewrc.d"
+  #   register: old_set_brewrcd
+  #   ignore_errors: yes
+  #   changed_when: False
+
+  # - name: "Remove old .brewrc.d"
+  #   file: name={{item}} state=absent
+  #   with_items: old_set_brewrcd.stdout_lines
+
+  - name: "Local current working directory"
+    local_action: command pwd
+    register: playbook_path
+    changed_when: False
+
+  - name: "Sync common environment"
+    synchronize: 
+      src: "{{ playbook_path.stdout }}/files/"
+      dest: "{{ ansible_user_dir }}/"
+      recursive: yes
+      rsync_opts:
+        - "--no-motd"
+        - "--exclude=.brewrc.d"
+
+  - name: "Sync .brewrc.d to Darwin environments"
+    when: ansible_os_family == 'Darwin'
+    synchronize: 
+      src: "{{ playbook_path.stdout }}/files/.brewrc.d"
+      dest: "{{ ansible_user_dir }}/"
+      recursive: yes
+
+
+  - name: "Ensure playbook project path exists"
+    file: "name={{ ansible_user_dir }}/dev/scm/git/correlate state=directory"
+
+  - name: "Sync playbook project"
+    synchronize:
+      src: "{{ playbook_path.stdout }}/"
+      dest: "{{ ansible_user_dir }}/dev/scm/git/correlate/"
+      recursive: yes

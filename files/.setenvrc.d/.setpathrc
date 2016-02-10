@@ -1,0 +1,11 @@
+#! /bin/sh
+
+
+echo "Path setup"
+
+# Clean PATH duplicates
+TEMP_PATH="$(echo $PATH | tr ':' '\n' |  awk '!a[$0]++' |  tr '\n' ':' | tr '\n' ':')"
+export PATH=$TEMP_PATH
+unset $TEMP_PATH
+
+

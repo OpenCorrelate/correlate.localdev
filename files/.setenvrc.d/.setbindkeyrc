@@ -1,0 +1,13 @@
+#! /bin/zsh
+
+echo "Key Bindings"
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[3~" delete-char
+bindkey "^[3;5~" delete-char
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;2D' backward-word
+bindkey '^[[1;2C' forward-word
+
+bindkey "^H" backward-delete-word

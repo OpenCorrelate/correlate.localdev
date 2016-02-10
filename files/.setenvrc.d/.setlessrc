@@ -1,6 +1,6 @@
 #! /bin/sh
 
-echo "Less setup"
+echo "Configure Less"
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS='-R'

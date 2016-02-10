@@ -1,0 +1,4 @@
+#! /bin/sh
+
+echo "Cron setup"
+export VIM_CRONTAB=true

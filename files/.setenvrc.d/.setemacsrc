@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo "Emacs setup"
+export EMAIL=""
+export NAME="<FULL NAME>"
+export SMTPSERVER="smtp.gmail.com"

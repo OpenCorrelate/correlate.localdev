@@ -1,0 +1,6 @@
+#! /bin/sh
+
+if `which vagrant > /dev/null`; then
+    echo "Vagrant setup"
+    export VAGRANT_DEFAULT_PROVIDER=virtualbox
+fi

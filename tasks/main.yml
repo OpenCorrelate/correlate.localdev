@@ -6,15 +6,7 @@
 #   sudo: yes
 #   tags: main
 
-- name: Copy environment scaffold
-  copy: src={{item}} 
-        dest=~/
-        owner={{ ansible_user_id }} 
-        mode=0644
-        force={{ shell_scaffold_force | default('no')}}
-  with_fileglob:
-    - .zshrc
-    - .set*rc
+- include: scaffold/main.yml
   tags:
     - main
     - scaffold

@@ -1,0 +1,15 @@
+#! /bin/sh
+
+virtualenvwrapper=/usr/local/bin/virtualenvwrapper.sh
+
+echo "Python setup"
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+
+if [ -e $virtualenvwrapper ]; then
+    . $virtualenvwrapper
+fi
+
+

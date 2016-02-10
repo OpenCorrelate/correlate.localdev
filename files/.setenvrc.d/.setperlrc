@@ -1,0 +1,15 @@
+#! /bin/sh
+
+
+perlbrew_bashrc="$HOME/perl5/perlbrew/etc/bashrc"
+if [ -f "$perlbrew_bashrc" ]; then
+
+    echo "Perl setup"
+
+    source $perlbrew_bashrc
+
+    export PATH=$HOME/perl5/perlbrew/bin:$PATH
+    
+    PERL_MB_OPT="--install_base \"/Users/revprez/perl5\""; export PERL_MB_OPT;
+    PERL_MM_OPT="INSTALL_BASE=/Users/revprez/perl5"; export PERL_MM_OPT;
+fi

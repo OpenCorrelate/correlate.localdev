@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo "Ansible Setup"
+
+if `which ansible > /dev/null`; then
+    export ANSIBLE_CONFIG="$HOME/.ansible.cfg"
+fi
+

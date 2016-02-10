@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo "pbcopy Setup"
+
+if ! type pbcopy > /dev/null && type xclip > /dev/null; then
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+fi

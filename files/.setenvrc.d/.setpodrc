@@ -1,0 +1,4 @@
+#! /bin/sh
+
+echo "Cocoapods setup"
+export COCOAPODS_DISABLE_DETERMINISTIC_UUIDS=YES

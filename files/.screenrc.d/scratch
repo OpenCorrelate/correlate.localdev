@@ -1,0 +1,67 @@
+# GNU Screen - main configuration file 
+# All other .screenrc files will source this file to inherit settings.
+# Author: Christian Wills - cwills.sys@gmail.com
+
+
+startup_message off
+
+# Allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# Tell screen how to set colors. AB = background, AF=foreground
+# Enables use of Shift Up and Shift Down
+termcapinfo * ti@:te@
+
+
+# Erase background with current bg color
+defbce "on"
+
+# Enable 256 color term
+term xterm-256color
+
+# Cache 30000 lines for scroll back
+defscrollback 30000
+
+# New mail notification
+# backtick 101 30 15 $HOME/bin/mailstatus.sh
+
+hardstatus alwayslastline 
+# Very nice tabbed colored hardstatus line
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%101`%{KW}|%D %M %d %Y%{= Kc} %C%A%{-}'
+
+# change command character from ctrl-a to ctrl-b (emacs users may want this)
+#escape ^Bb
+
+# Hide hardstatus: ctrl-a f 
+bind f eval "hardstatus ignore"
+# Show hardstatus: ctrl-a F
+bind F eval "hardstatus alwayslastline"
+
+# Other stuff
+vbell on
+defscrollback 1024
+startup_message off
+autodetach on
+defutf8 on
+
+
+# Load scratch
+chdir $SCRATCH_HOME
+screen -t scratch
+
+chdir $SRC_HOME
+screen -t src
+
+chdir $BUILD_HOME
+screen -t build
+
+chdir $INSTALL_HOME
+screen -t install
+
+chdir $INSTALL_HOME/bin
+screen -t bin
+
+chdir $SCM_HOME/git/revprez/update-envs
+screen -t "update-envs"
+
+chdir $SCRATCH_HOME

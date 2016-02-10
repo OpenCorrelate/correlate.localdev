@@ -1,0 +1,21 @@
+#! /bin/sh
+
+echo "GNU Screen setup"
+
+screenrc_d_path="$HOME/.screenrc.d"
+
+function scr() {
+    
+    if [ $# -eq 0 ]; then
+        screen
+    elif [ ! -f "$screenrc_d_path/$1" ]; then
+        echo "$screenrc_d_path/$1 is not a valid screen configuration"
+        echo "Usage: $0 <screen config> [options]"
+    elif [ $# -lt 2 ]; then
+        echo "screen -c $1"
+        screen -S $1 -c $screenrc_d_path/$1
+    else
+        echo "screen -c $1 ${@:2}"
+        screen -S $1 -c $1 ${@:2}
+    fi
+}

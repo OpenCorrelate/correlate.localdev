@@ -1,0 +1,13 @@
+#! /bin/sh
+
+phpbrew_bashrc=$HOME/.phpbrew/bashrc
+
+if [[ -f "$phpbrew_bashrc" ]]; then
+
+    echo "PHP Setup"
+
+    source $phpbrew_bashrc
+    export PATH=$HOME/.phpbrew/bin:$PATH
+    export PHPBREW_SET_PROMPT=1
+
+fi

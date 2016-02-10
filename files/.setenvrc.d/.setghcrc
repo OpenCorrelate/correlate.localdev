@@ -1,0 +1,4 @@
+#! /bin/sh
+
+echo "Haskell setup"
+export PATH=$PATH:$HOME/.cabal/bin
