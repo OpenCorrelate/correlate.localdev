@@ -1,12 +1,7 @@
 ---
-- name: "Local current working directory"
-  local_action: command pwd
-  register: playbook_path
-  changed_when: False
-
 - name: "Sync common environment"
   synchronize: 
-    src: "{{ playbook_path.stdout }}/files/"
+    src: "files/"
     dest: "{{ ansible_user_dir }}/"
     recursive: yes
     rsync_opts:
@@ -16,16 +11,6 @@
 - name: "Sync .brewrc.d to Darwin environments"
   when: ansible_os_family == 'Darwin'
   synchronize: 
-    src: "{{ playbook_path.stdout }}/files/.brewrc.d"
+    src: "files/.brewrc.d"
     dest: "{{ ansible_user_dir }}/"
-    recursive: yes
-
-
-- name: "Ensure playbook project path exists"
-  file: "name={{ ansible_user_dir }}/dev/scm/git/correlate state=directory"
-
-- name: "Sync playbook project"
-  synchronize:
-    src: "{{ playbook_path.stdout }}/"
-    dest: "{{ ansible_user_dir }}/dev/scm/git/correlate/"
     recursive: yes
