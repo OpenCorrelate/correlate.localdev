@@ -2,50 +2,15 @@
 - name: "Sanity check for Debian Environment"
   ping:
 
-- name: "Install prereq packages"
+- name: "Install scaffold prereq packages"
   apt: pkg={{item}} state=installed
   with_items:
     - software-properties-common 
-    - nfs-kernel-server 
-    - nfs-common
-    - portmap
     - zsh
     - keychain
     - vim
   sudo: yes
-
-# - name: "Install Oracle Virtualbox GPG key"
-#   apt_key: url=https://www.virtualbox.org/download/oracle_vbox.asc state=present
-#   sudo: yes
-
-# - name: "Add repository for latest Oracle Virtualbox (5.0.x)"
-#   apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian vivid contrib' state=present
-#   sudo: yes
-
-# - name: "Add repository for latest Ansible"
-#   apt_repository: repo='ppa:ansible/ansible' state=present
-#   sudo: yes
-
-# - name: "Update cache"
-#   apt: update_cache=yes
-#   sudo: yes
-
-# - name: Install Virtualbox and Ansible
-#   apt: pkg={{item}} state=installed
-#   with_items:
-#     - virtualbox-5.0
-#     - ansible
-#   sudo: yes
-
-# - name: Fetch Vagrant installer
-#   get_url:  url=https://releases.hashicorp.com/vagrant/{{ vagrant_version | default('1.7.4')}}/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb  
-#             dest=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb mode=0644
-
-# - name: Run Vagrant installer
-#   apt:  deb=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb 
-#         state=installed
-#   sudo: yes
-
+  tags: scaffold
 
 - name: Change shell to ZSH
   user: name={{ ansible_user_id }}
@@ -53,6 +18,7 @@
         append=yes
         shell=/usr/bin/zsh
   sudo: yes
+  tags: scaffold
 
 - name: Set default key for user
   user: name={{ ansible_user_id }}
@@ -63,3 +29,51 @@
         ssh_key_type=rsa
         ssh_key_file=.ssh/key-{{ansible_hostname}}-{{ansible_date_time.year}}{{ansible_date_time.month}}{{ansible_date_time.day}}
   sudo: yes
+  tags: scaffold
+
+- name: "Install vagrant prereq packages"
+  apt: pkg={{item}} state=installed
+  with_items:
+    - nfs-kernel-server 
+    - nfs-common
+  sudo: yes
+  tags: orchestration
+
+- name: "Install Oracle Virtualbox GPG key"
+  apt_key: url=https://www.virtualbox.org/download/oracle_vbox.asc state=present
+  sudo: yes
+  tags: orchestration
+
+- name: "Add repository for latest Oracle Virtualbox (5.0.x)"
+  apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian vivid contrib' state=present
+  sudo: yes
+  tags: orchestration
+
+- name: "Add repository for latest Ansible"
+  apt_repository: repo='ppa:ansible/ansible' state=present
+  sudo: yes
+  tags: orchestration
+
+- name: "Update cache"
+  apt: update_cache=yes
+  sudo: yes
+  tags: orchestration
+
+- name: Install Virtualbox and Ansible
+  apt: pkg={{item}} state=installed
+  with_items:
+    - virtualbox-5.0
+    - ansible
+  sudo: yes
+  tags: orchestration
+
+- name: Fetch Vagrant installer
+  get_url:  url=https://releases.hashicorp.com/vagrant/{{ vagrant_version | default('1.7.4')}}/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb  
+            dest=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb mode=0644
+  tags: orchestration
+
+- name: Run Vagrant installer
+  apt:  deb=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb 
+        state=installed
+  sudo: yes
+  tags: orchestration
