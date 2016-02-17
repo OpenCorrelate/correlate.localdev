@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo "Prompt setup"
+
+# Prompt
+autoload -Uz promptinit
+promptinit
+prompt fade blue

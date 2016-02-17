@@ -14,37 +14,37 @@
     - vim
   sudo: yes
 
-- name: "Install Oracle Virtualbox GPG key"
-  apt_key: url=https://www.virtualbox.org/download/oracle_vbox.asc state=present
-  sudo: yes
+# - name: "Install Oracle Virtualbox GPG key"
+#   apt_key: url=https://www.virtualbox.org/download/oracle_vbox.asc state=present
+#   sudo: yes
 
-- name: "Add repository for latest Oracle Virtualbox (5.0.x)"
-  apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian vivid contrib' state=present
-  sudo: yes
+# - name: "Add repository for latest Oracle Virtualbox (5.0.x)"
+#   apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian vivid contrib' state=present
+#   sudo: yes
 
-- name: "Add repository for latest Ansible"
-  apt_repository: repo='ppa:ansible/ansible' state=present
-  sudo: yes
+# - name: "Add repository for latest Ansible"
+#   apt_repository: repo='ppa:ansible/ansible' state=present
+#   sudo: yes
 
-- name: "Update cache"
-  apt: update_cache=yes
-  sudo: yes
+# - name: "Update cache"
+#   apt: update_cache=yes
+#   sudo: yes
 
-- name: Install Virtualbox and Ansible
-  apt: pkg={{item}} state=installed
-  with_items:
-    - virtualbox-5.0
-    - ansible
-  sudo: yes
+# - name: Install Virtualbox and Ansible
+#   apt: pkg={{item}} state=installed
+#   with_items:
+#     - virtualbox-5.0
+#     - ansible
+#   sudo: yes
 
-- name: Fetch Vagrant installer
-  get_url:  url=https://releases.hashicorp.com/vagrant/{{ vagrant_version | default('1.7.4')}}/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb  
-            dest=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb mode=0644
+# - name: Fetch Vagrant installer
+#   get_url:  url=https://releases.hashicorp.com/vagrant/{{ vagrant_version | default('1.7.4')}}/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb  
+#             dest=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb mode=0644
 
-- name: Run Vagrant installer
-  apt:  deb=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb 
-        state=installed
-  sudo: yes
+# - name: Run Vagrant installer
+#   apt:  deb=/tmp/vagrant_{{ vagrant_version | default('1.7.4')}}_{{ ansible_architecture }}.deb 
+#         state=installed
+#   sudo: yes
 
 
 - name: Change shell to ZSH
