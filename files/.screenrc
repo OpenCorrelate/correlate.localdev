@@ -38,19 +38,7 @@ bind f eval "hardstatus ignore"
 # Show hardstatus: ctrl-a F
 bind F eval "hardstatus alwayslastline"
 
-
-# Load apps
-screen -t octave octave
-screen -t irssi irssi irc.dal.net
-
-# Load home
-screen -t home
-
-# Load scratch and exercise
-chdir $SCRATCH_HOME
-screen -t scratch
-chdir $EXERCISE_HOME
-screen -t exercise
-
-# Return home
-chdir $HOME
+bindkey "^[[1;5C" prev
+bindkey "^[[1;3D" prev
+bindkey "^[[1;5D" next
+bindkey "^[[1;3C" next
